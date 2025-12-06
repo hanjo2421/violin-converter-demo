@@ -1,0 +1,63 @@
+<div class="page">
+    <section class="card">
+      <h2 class="title">Demo · Synthesized vs Ground Truth</h2>
+  
+      <div class="demo-grid header">
+        <span class="col-label"></span>
+        <span class="col-label">Ground Truth</span>
+        <span class="col-label">Synthesized</span>
+      </div>
+  
+      <div
+        class="demo-grid row"
+        *ngFor="let sample of demoSamples"
+        [attr.data-instrument]="sample.label"
+      >
+        <span class="inst">{{ sample.label }}</span>
+  
+        <audio
+          class="player"
+          controls
+          preload="metadata"
+          [src]="sample.groundTruth"
+        ></audio>
+  
+        <audio
+          class="player"
+          controls
+          preload="metadata"
+          [src]="sample.synthesized"
+        ></audio>
+      </div>
+    </section>
+  
+    <section class="card">
+      <h2 class="title">Interesting Case · Cross-Instrument Synthesis</h2>
+      <p class="subtitle">
+        Cello input automatically rendered as violin — showing cross-instrument
+        capability.
+      </p>
+  
+      <div class="demo-grid header two-col">
+        <span class="col-label">Input (Cello)</span>
+        <span class="col-label">Synthesized (Violin)</span>
+      </div>
+  
+      <div class="demo-grid row two-col">
+        <audio
+          class="player"
+          controls
+          preload="metadata"
+          [src]="interestingCase.input"
+        ></audio>
+  
+        <audio
+          class="player"
+          controls
+          preload="metadata"
+          [src]="interestingCase.output"
+        ></audio>
+      </div>
+    </section>
+  </div>
+  

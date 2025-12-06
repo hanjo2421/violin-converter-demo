@@ -1,0 +1,51 @@
+<div class="page">
+  <div class="card elegant">
+    <header class="header">
+      <h1>🎼 Music Sheet to MIDI</h1>
+      <p>Upload a score and get a MIDI + debug preview</p>
+    </header>
+
+    <div class="how-it-works">
+      <h3>How it works</h3>
+      <ol>
+        <li>Upload a music score image</li>
+        <li>Select the instrument you want</li>
+        <li>Listen to the result instantly</li>
+      </ol>
+    </div>  
+
+    <div class="form">
+      <label class="file-upload">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <span>📂 Select Image</span>
+      </label>
+
+      <select [(ngModel)]="selectedInstrument" class="dropdown">
+        <option *ngFor="let inst of instruments" [value]="inst">{{ inst | titlecase }}</option>
+      </select>
+
+      <button class="convert-button" (click)="onUpload()" [disabled]="!selectedFile">
+        🎶 Convert
+      </button>
+    </div>
+
+    <p *ngIf="selectedFile" class="filename">Selected: {{ selectedFile.name }}</p>
+    <p *ngIf="isProcessing && !previewUrl" class="loading">⏳ Processing... Please wait.</p>
+
+    <div *ngIf="previewUrl" class="output">
+      <h3>Debug Image</h3>
+      <img [src]="previewUrl" alt="debug-notes" />
+    </div>
+
+    <div *ngIf="audioUrl" class="output">
+      <h3>Audio Playback</h3>
+      <audio controls>
+        <source [src]="audioUrl" type="audio/wav" />
+      </audio>
+    </div>
+
+    <footer class="footer">
+      <p>John Wang, Hanjo Kim · EE123 Final Project · 2025</p>
+    </footer>  
+  </div>
+</div>

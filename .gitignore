@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+
+# Data files
+*.wav
+*.flac
+*.mp3
+data/
+
+# Model files
+*.pth
+*.pt
+*.ckpt
+
+# OS
+.DS_Store
+sheet_to_midi/resources/soundfonts/
+# Large files
+sheet_to_midi/resources/soundfonts/
+*.sf2
+
+# Temporary files
+sheet_to_midi/static/
+sheet_to_midi/uploads/
